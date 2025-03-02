@@ -12,19 +12,16 @@ export default function AddDegree() {
   const [addedCourses, setAddedCourses] = useState([]);
   const [error, setError] = useState("");
   const [editingCourse, setEditingCourse] = useState(null); // Track course being edited
-  console.log("API URL:", import.meta.env.VITE_API_URL);
 
-  const API_URL = import.meta.env.VITE_API_URL; 
-  console.log(API_URL)
-  // Correct way to access the variable
-  // Fetch degrees from the backend
+
+ 
   useEffect(() => {
     fetchDegrees();
   }, []);
 
   const fetchDegrees = async () => {
     try {
-      const response = await axios.get(`${API_URL}/api/degrees`);
+      const response = await axios.get(`https://academic-backend-5azj.onrender.com/api/degrees`);
       setAddedCourses(response.data);
     } catch (error) {
       console.error("Error fetching degrees:", error);
@@ -47,7 +44,7 @@ export default function AddDegree() {
     // If editing, update the degree
     if (editingCourse) {
       try {
-        await axios.put(`${API_URL}/api/degrees/${editingCourse._id}`, formData);
+        await axios.put(`https://academic-backend-5azj.onrender.com/api/degrees/${editingCourse._id}`, formData);
         fetchDegrees();
         setEditingCourse(null);
       } catch (error) {
@@ -56,7 +53,7 @@ export default function AddDegree() {
     } else {
       // Add a new degree
       try {
-        await axios.post(`${API_URL}/api/degrees`, formData);
+        await axios.post(`https://academic-backend-5azj.onrender.com/api/degrees`, formData);
         fetchDegrees();
       } catch (error) {
         setError("Failed to save degree.");
