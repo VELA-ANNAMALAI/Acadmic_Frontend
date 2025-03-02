@@ -229,15 +229,15 @@ export default function AdminAcademic_Course() {
 
           <h3 className="mb-3">Add Course</h3>
           <form onSubmit={handleSubmit}>
-            <div className="mb-3">
-              <label className="form-label">Academic Year:</label>
-              <input 
-                type="text" 
-                className="form-control" 
-                value={academicYear} 
-              
-              />
-            </div>
+       <div className="mb-3">
+  <label className="form-label">Academic Year:</label>
+  <input 
+    type="text" 
+    className="form-control" 
+    value={academicYear} 
+    onChange={(e) => setAcademicYear(e.target.value)} // Allow typing
+  />
+</div>
 
             <div className="mb-3">
               <label className="form-label">Course Name:</label>
