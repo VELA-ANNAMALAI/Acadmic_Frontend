@@ -1,0 +1,51 @@
+.custom-accordion {
+    border: 1px solid #3597ed;
+    border-radius: 5px;
+    max-width: 950px;
+    margin: 0 auto;
+    overflow: hidden;
+    margin-right: 1px;
+
+
+  }
+  
+  .accordion-item {
+    border-bottom: 1px solid #481d1d;
+  }
+
+  .accordion-header {
+    text-align: center; /* Centers the h2 text horizontally */
+  }
+  
+  
+  .accordion-header {
+    background: #f8f9fa;
+    padding: 15px 20px;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background 0.3s ease;
+  }
+  
+  .accordion-header:hover {
+    background: #e9ecef;
+  }
+  
+  .accordion-header.active {
+    background: #007bff;
+    color: #fff;
+  }
+  
+  .accordion-content {
+    padding: 15px 20px;
+    background: #ffffff;
+    border-top: 1px solid #ddd;
+    font-size: 16px;
+  }
+  
+  .accordion-content p {
+    margin: 0;
+  }
+  
