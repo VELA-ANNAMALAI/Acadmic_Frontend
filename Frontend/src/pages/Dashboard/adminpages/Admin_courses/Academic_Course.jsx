@@ -235,7 +235,7 @@ export default function AdminAcademic_Course() {
                 type="text" 
                 className="form-control" 
                 value={academicYear} 
-                readOnly 
+              
               />
             </div>
 
