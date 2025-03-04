@@ -85,7 +85,7 @@ const AdminStudentMark = () => {
     if (selectedCourse && selectedYear) {
       try {
         const response = await axios.get(
-          `http://localhost:5000/apimark/subjects?course=${selectedCourse}&academicYear=${selectedYear}`
+          `https://academic-backend-5azj.onrender.com/apimark/subjects?course=${selectedCourse}&academicYear=${selectedYear}`
         );
         console.log("fetch",response);
         const allSubjects = response.data.subjects;
