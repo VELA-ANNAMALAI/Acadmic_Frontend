@@ -82,7 +82,6 @@ const StudentMark = () => {
           const response = await axios.get(`https://academic-backend-5azj.onrender.com/api/degrees/courses`, {
             params: { department: selectedDepartment, courseType }
           });
-          console.log("Courses API Response:", response.data); // Log the response
           setCourses(response.data);
         } catch (error) {
           console.error("Error fetching courses:", error);
@@ -117,6 +116,7 @@ const StudentMark = () => {
         const response = await axios.get(
           `https://academic-backend-5azj.onrender.com/apimark/subjects?course=${selectedCourse}&academicYear=${selectedYear}`
         );
+        console.log("fetch",response);
         const allSubjects = response.data.subjects;
         const filteredSubjects = allSubjects.filter(subject => subject.semester === selectedSemester);
         setSubjects(filteredSubjects.length > 0 ? filteredSubjects : []);
@@ -217,50 +217,50 @@ const StudentMark = () => {
     }
   };
 
-   const downloadEmptyXLS = () => {
-     // Prepare the headers
-     const headers = ["Register No", "Name", ...subjects.map(subject => subject.subCode)];
-     
-     // Create an empty data array
-     const data = students.map(student => {
-       const studentData = {
-         "Register No": student.registerno,
-         "Name": student.name,
-       };
-       // Add subject codes with empty values
-       subjects.forEach(subject => {
-         studentData[subject.subCode] = ""; // Initialize with empty string
-       });
-       return studentData;
-     });
-   
-     // Create a worksheet from the data
-     const ws = XLSX.utils.json_to_sheet(data, { header: headers });
-     const wb = XLSX.utils.book_new();
-     XLSX.utils.book_append_sheet(wb, ws, "Empty Marks Template");
-   
-     // Write the file
-     XLSX.writeFile(wb, "Empty_Marks_Template.xlsx");
-   };
+  const downloadEmptyXLS = () => {
+    // Prepare the headers
+    const headers = ["Register No", "Name", ...subjects.map(subject => subject.subCode)];
+    
+    // Create an empty data array
+    const data = students.map(student => {
+      const studentData = {
+        "Register No": student.registerno,
+        "Name": student.name,
+      };
+      // Add subject codes with empty values
+      subjects.forEach(subject => {
+        studentData[subject.subCode] = ""; // Initialize with empty string
+      });
+      return studentData;
+    });
+  
+    // Create a worksheet from the data
+    const ws = XLSX.utils.json_to_sheet(data, { header: headers });
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "Empty Marks Template");
+  
+    // Write the file
+    XLSX.writeFile(wb, "Empty_Marks_Template.xlsx");
+  };
 
-    const downloadStudentMarks = () => {
-       const data = students.map(student => {
-         const studentData = {
-           "Register No": student.registerno,
-           "Name": student.name,
-         };
-         subjects.forEach(subject => {
-           studentData[subject.title] = marks[student.registerno]?.[subject.subCode] || "";
-         });
-         return studentData;
-       });
-   
-       const ws = XLSX.utils.json_to_sheet(data);
-       const wb = XLSX.utils.book_new();
-       XLSX.utils.book_append_sheet(wb, ws, "Student Marks");
-   
-       XLSX.writeFile(wb, "Student_Marks.xlsx");
-     };
+  const downloadStudentMarks = () => {
+    const data = students.map(student => {
+      const studentData = {
+        "Register No": student.registerno,
+        "Name": student.name,
+      };
+      subjects.forEach(subject => {
+        studentData[subject.title] = marks[student.registerno]?.[subject.subCode] || "";
+      });
+      return studentData;
+    });
+
+    const ws = XLSX.utils.json_to_sheet(data);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "Student Marks");
+
+    XLSX.writeFile(wb, "Student_Marks.xlsx");
+  };
    
   const styles = {
     container: {
