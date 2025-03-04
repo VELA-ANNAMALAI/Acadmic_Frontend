@@ -118,7 +118,7 @@ export default function AdminAcademic_Course() {
     }
 
     try {
-      await axios.post(`http://localhost:5000/apicourses/addcourse/${searchParams.department}`, {
+      await axios.post(`https://academic-backend-5azj.onrender.com/apicourses/addcourse/${searchParams.department}`, {
         academicYear: newCourse.academicYear,
         courseName: newCourse.courseName,
         semesters: newCourse.semesters
