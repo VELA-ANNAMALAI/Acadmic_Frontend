@@ -53,7 +53,6 @@ const AdminStudentMark = () => {
           const response = await axios.get(`https://academic-backend-5azj.onrender.com/api/degrees/courses`, {
             params: { department: selectedDepartment, courseType }
           });
-          console.log("Courses API Response:", response.data); // Log the response
           setCourses(response.data);
         } catch (error) {
           console.error("Error fetching courses:", error);
@@ -86,8 +85,9 @@ const AdminStudentMark = () => {
     if (selectedCourse && selectedYear) {
       try {
         const response = await axios.get(
-          `https://academic-backend-5azj.onrender.com/apimark/subjects?course=${selectedCourse}&academicYear=${selectedYear}`
+          `http://localhost:5000/apimark/subjects?course=${selectedCourse}&academicYear=${selectedYear}`
         );
+        console.log("fetch",response);
         const allSubjects = response.data.subjects;
         const filteredSubjects = allSubjects.filter(subject => subject.semester === selectedSemester);
         setSubjects(filteredSubjects.length > 0 ? filteredSubjects : []);
