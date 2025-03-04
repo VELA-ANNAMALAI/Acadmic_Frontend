@@ -118,7 +118,7 @@ export default function AdminAcademic_Course() {
     }
 
     try {
-      await axios.post(`https://academic-backend-5azj.onrender.com/apicourses/addcourse/${searchParams.department}`, {
+      await axios.post(`http://localhost:5000/apicourses/addcourse/${searchParams.department}`, {
         academicYear: newCourse.academicYear,
         courseName: newCourse.courseName,
         semesters: newCourse.semesters
@@ -229,13 +229,13 @@ export default function AdminAcademic_Course() {
 
           <h3 className="mb-3">Add Course</h3>
           <form onSubmit={handleSubmit}>
-       <div className="mb-3">
+          <div className="mb-3">
   <label className="form-label">Academic Year:</label>
   <input 
     type="text" 
     className="form-control" 
-    value={academicYear} 
-    onChange={(e) => setAcademicYear(e.target.value)} // Allow typing
+    value={newCourse.academicYear} // Use newCourse.academicYear
+    onChange={(e) => setNewCourse({ ...newCourse, academicYear: e.target.value })} // Update newCourse.academicYear
   />
 </div>
 
