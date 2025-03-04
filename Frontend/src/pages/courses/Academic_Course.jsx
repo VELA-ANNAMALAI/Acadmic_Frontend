@@ -47,7 +47,6 @@ export default function Academic_Course() {
     }
   };
 
-  // Fetch saved courses from the backend when a department is selected
   useEffect(() => {
     if (searchParams.department) {
       fetchCourses(searchParams.department);
@@ -130,7 +129,7 @@ export default function Academic_Course() {
     }
 
     try {
-      await axios.post(`https://academic-backend-5azj.onrender.com/apicourses/addcourse/${searchParams.department}`, {
+      await axios.post(`http://localhost:5000/apicourses/addcourse/${searchParams.department}`, {
         academicYear: newCourse.academicYear,
         courseName: newCourse.courseName,
         semesters: newCourse.semesters
@@ -270,14 +269,15 @@ export default function Academic_Course() {
 
           <h3 className="mb-3">Add Course</h3>
           <form onSubmit={handleSubmit}>
-            <div className="mb-3">
-              <label className="form-label">Academic Year:</label>
-              <input 
-                type="text" 
-                className="form-control" 
-                value={academicYear} 
-              />
-            </div>
+          <div className="mb-3">
+  <label className="form-label">Academic Year:</label>
+  <input 
+    type="text" 
+    className="form-control" 
+    value={newCourse.academicYear} // Use newCourse.academicYear
+    onChange={(e) => setNewCourse({ ...newCourse, academicYear: e.target.value })} // Update newCourse.academicYear
+  />
+</div>
 
             <div className="mb-3">
               <label className="form-label">Course Name:</label>
