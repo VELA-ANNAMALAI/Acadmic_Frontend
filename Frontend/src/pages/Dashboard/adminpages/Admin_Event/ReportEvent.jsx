@@ -19,7 +19,7 @@ const AdminReportEvent = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/apievent/events");
+        const response = await axios.get(`https://academic-backend-5azj.onrender.com/apievent/events`);
         setEvents(response.data);
       } catch (err) {
         console.error(err);
@@ -31,7 +31,7 @@ const AdminReportEvent = () => {
 
     const fetchDepartments = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/degrees"); // Adjust the URL as needed
+        const response = await axios.get(`https://academic-backend-5azj.onrender.com/api/degrees`); // Adjust the URL as needed
         const uniqueDepartments = [...new Set(response.data.map(degree => degree.department))];
         setDepartments(uniqueDepartments);
       } catch (err) {
