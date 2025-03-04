@@ -331,7 +331,9 @@ const EventDetails = () => {
                       alt="Event Flyer" 
                       style={{ width: '100%', maxWidth: '600px', height: 'auto' }} 
                     />
-                 
+                  </div>
+                       <Button variant="danger" onClick={handleDeleteFlyer} className="mt-2">Delete Flyer</Button>
+                     </div>
               )}
               <div className="mt-3">
                 <input 
