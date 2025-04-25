@@ -7,6 +7,7 @@ const TotalCount = () => {
     totalStudents: 0,
     totalFaculty: 0,
     upcomingEvents: 0,
+    totalCourses: 0,
   });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -53,7 +54,7 @@ const TotalCount = () => {
           <Card className="text-center">
             <Card.Body>
               <Card.Title>Total Courses</Card.Title>
-              <Card.Text>0</Card.Text>
+              <Card.Text>{counts.totalCourses}</Card.Text>
             </Card.Body>
           </Card>
         </Col>
