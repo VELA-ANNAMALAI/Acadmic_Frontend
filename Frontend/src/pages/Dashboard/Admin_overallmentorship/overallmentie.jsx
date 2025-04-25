@@ -241,7 +241,7 @@ const OverallMentie = () => {
           <h5>{index + 1}. {student.name}</h5>
           <p><strong>Register No:</strong> {student.registerno}</p>
           <p><strong>Course:</strong> {student.course}</p>
-          <p><strong>Academic Year:</strong> {student.academicyear}</p>
+          <p><strong>Academic Year:</strong> {student.academicYear}</p>
           <p><strong>Section:</strong> {student.section}</p>
         </div>
 
