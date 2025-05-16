@@ -126,7 +126,7 @@ const Login = () => {
         <form onSubmit={handleLogin} style={{ width: "100%" }}>
           <input
             type="text"
-            placeholder="Staff ID"
+            placeholder="Username"
             value={staffId}
             onChange={(e) => setStaffId(e.target.value)}
             required
